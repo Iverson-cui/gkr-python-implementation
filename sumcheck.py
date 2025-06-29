@@ -188,6 +188,8 @@ def sumcheck(value, poly, variable_length):
     variable_length: number of variables in the polynomial
 
     This function implements the sumcheck protocol to verify the claimed sum of a polynomial. At the end, variable_length variables is checked, but without final verification using oracle access.
+
+    This function just stops when it assigns the final value to g_vector[variable_length - 1]. Comparing g_vector[variable_length - 1] with the polynomial evaluated at the random challenge vector r is done in the lastcheck function.
     """
     if variable_length == 1 and (poly([0]) + poly([1]) % p) == value % p:
         return True
